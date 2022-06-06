@@ -21,13 +21,15 @@ def authenticate_and_get_token(username: str, password: str,
         }
     )
     
+    print(resp)
+    
     return(resp['AuthenticationResult']['AccessToken'], resp['AuthenticationResult']['IdToken'])
 
 username = getpass.getpass(prompt="username:")
 password = getpass.getpass(prompt="password:")
     
-url = "https://ms6u08yno3.execute-api.eu-west-1.amazonaws.com/Prod/notes"
-tokens = authenticate_and_get_token(username = username, password = password, user_pool_id = "eu-west-1_HSqHWksN5", app_client_id = "1io9becicqp4gduc9gcbhvlrir")
+url = "https://kg6sq0mhh0.execute-api.eu-west-1.amazonaws.com/Prod/notes"
+tokens = authenticate_and_get_token(username = username, password = password, user_pool_id = "eu-west-1_Xev95q6v9", app_client_id = "5nibl4fdhabmv2n2navke3fpsc")
 auth_header = {"Authorization":tokens[1]}
 response = call(url, auth_header)
 print(response)

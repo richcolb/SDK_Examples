@@ -23,6 +23,6 @@ def authenticate_and_get_token(username: str, password: str,
     return(resp['AuthenticationResult']['AccessToken'], resp['AuthenticationResult']['IdToken'])
     
     
-tokens = authenticate_and_get_token(username = username, password = password, user_pool_id = "eu-west-1_HSqHWksN5", app_client_id = "1io9becicqp4gduc9gcbhvlrir")
+tokens = authenticate_and_get_token(username = username, password = password, user_pool_id = "eu-west-1_Xev95q6v9", app_client_id = "5nibl4fdhabmv2n2navke3fpsc")
 print("Access token:",tokens[0])
 print("ID token:",tokens[1])

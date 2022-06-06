@@ -3,8 +3,8 @@ import json
 client = boto3.client('ce')
 result = client.get_cost_and_usage(
     TimePeriod = {
-        'Start': '2022-01-01',
-        'End': '2022-02-01'
+        'Start': '2022-02-01',
+        'End': '2022-03-01'
     },
     Granularity = 'MONTHLY',
     Metrics = ["UnblendedCost"],
