@@ -1,10 +1,3 @@
-import boto3
+mydict = {"fname":"richard","lname":"colborne","age":45,"height_cm":187}
 
-client = boto3.client('comprehend')
-
-sentiment = client.detect_sentiment(Text = "", LanguageCode = 'en') #API call for sentiment analysis
-sentRes = sentiment['Sentiment'] #Positive, Neutral, or Negative
-sentScore = sentiment['SentimentScore'] #Percentage of Positive, Neutral, and Negative
-print(sentRes)
-print(sentScore)
-
+print(mydict["age"])
