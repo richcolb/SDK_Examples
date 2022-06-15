@@ -4,13 +4,12 @@
 
 import boto3
 import base64
-import json
 from botocore.exceptions import ClientError
 
 
 def get_secret():
 
-    secret_name = "arn:aws:secretsmanager:eu-west-1:160620582525:secret:dbpass-24kVWj"
+    secret_name = "arn:aws:secretsmanager:eu-west-1:160620582525:secret:dbpassword-wA3t3r"
     region_name = "eu-west-1"
 
     # Create a Secrets Manager client
@@ -28,6 +27,7 @@ def get_secret():
         get_secret_value_response = client.get_secret_value(
             SecretId=secret_name
         )
+        print(get_secret_value_response)
     except ClientError as e:
         if e.response['Error']['Code'] == 'DecryptionFailureException':
             # Secrets Manager can't decrypt the protected secret text using the provided KMS key.
@@ -54,10 +54,8 @@ def get_secret():
         # Depending on whether the secret is a string or binary, one of these fields will be populated.
         if 'SecretString' in get_secret_value_response:
             secret = get_secret_value_response['SecretString']
+            print(secret)
         else:
             decoded_binary_secret = base64.b64decode(get_secret_value_response['SecretBinary'])
-    
-    jsonsecret = json.loads(secret)
-    return jsonsecret["password"]
-  
-print(get_secret())
+            print(decoded_binary_secret)
+            
