@@ -22,8 +22,9 @@ def createddbtable(name):
             	'WriteCapacityUnits': 10
         	}
     	)
-
+	print("waiting for the {name} table to be created".format(name=name))
 	table.meta.client.get_waiter('table_exists').wait(TableName = name) 
 	print(table)
 
-createddbtable("somethingorother23")
+tableName = input("What is the table name: ")
+createddbtable(tableName)
